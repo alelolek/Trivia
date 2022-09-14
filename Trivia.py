@@ -117,6 +117,7 @@ import time
 def main():
     listaCategorias = obtenerCategorias()
     respuestaNombre = input('Ingresa tu nombre :')
+    print('Recuerda que estas compitiendo contra un jugador de otra parte de este mundo!!')
     print('\n¡Bienvenido',respuestaNombre,'! La trivia iniciará en...')
     for i in range (5,0,-1):
         print(i, '...')
@@ -127,7 +128,9 @@ def main():
         puntajeBot = []
         for categoria in listaCategorias:
             print(categoria.id,categoria.nombre)
-        respuestaCategoria = int(input('\nIngresa una categoria :'))
+        respuestaCategoria = input('\nIngresa una categoria :')
+        while respuestaCategoria not in  ('1','2','3'):
+                respuestaCategoria = input('\nIngresa una categoria válida :')
         listaPreguntas = obtenerPreguntasPorCategoria(respuestaCategoria)
 
         for pregunta in listaPreguntas:
