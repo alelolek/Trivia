@@ -117,8 +117,6 @@ import time
 def main():
     listaCategorias = obtenerCategorias()
     respuestaNombre = input('Ingresa tu nombre :')
-    print('Recuerda que estas compitiendo contra un jugador de otra parte de este mundo!!')
-    time.sleep(2)
     print('\n¡Bienvenido',respuestaNombre,'! La trivia iniciará en...')
     for i in range (5,0,-1):
         print(i, '...')
@@ -132,7 +130,7 @@ def main():
         respuestaCategoria = input('\nIngresa una categoria :')
         while respuestaCategoria not in  ('1','2','3'):
                 respuestaCategoria = input('\nIngresa una categoria válida :')
-          
+       
         listaPreguntas = obtenerPreguntasPorCategoria(int(respuestaCategoria))
 
         for pregunta in listaPreguntas:
@@ -162,14 +160,15 @@ def main():
         if sum(puntaje) > sum(puntajeBot): 
             print('\n'+GREEN+'Felicitaciones!! Ganaste con',sum(puntaje),' puntos y tu rival perdió con',sum(puntajeBot),'puntos',RESET)
         elif sum(puntaje) == sum(puntajeBot): 
-            print('\n'+YELLOW+'Tu rival y Tu empataron con',sum(puntaje),'pt',RESET)
+            print('\n'+YELLOW+'Empataron con',sum(puntaje),'puntos',RESET)
         else: 
             print('\n'+RED+'Lo siento. Perdiste con',sum(puntaje),' puntos y tu rival ganó con',sum(puntajeBot),'puntos',RESET)
 
-        respuestaReintentar = input('Deseas intentarlo otra vez? Si o No : ')
+        respuestaReintentar = input('Escribe Sí para reiniciar el juego, cualquier otra palabra para finalizar : ')
         print()
         if( respuestaReintentar.lower() != 'si'):
-            break
+          print("Juego finalizado. Si quieres reintentarlo, ejecuta el juego nuevamente.")  
+          break
 
 if __name__ == "__main__":
     main()
